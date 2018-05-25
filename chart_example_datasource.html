@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>  
+  <SCRIPT TYPE="TEXT/JAVASCRIPT">
+    window.onload = function (){
+
+      var chart = new CanvasJS.Chart("chartContainer",
+      {
+        zoomenabled: true, 
+        title:{
+          text: "Test" 
+        },
+        axisy:{
+          includezero: false
+        },
+        data: data,  // RANDOM GENERATOR BELOW        
+     });
+
+      chart.render();
+    }
+         
+    var limit = 10;    //INCREASE NUMBER OF DATAPOINTS BY INCREASING THIS
+    
+    var y = 0;
+    var data = []; 
+    var dataseries = { type: "line" };
+    var datapoints = [];
+    for (var i = 0; i < limit; i += 1) {
+        y += (Math.random() * 10 - 5);
+         datapoints.push({
+          x: i - limit / 2,
+          y: y                
+           });
+        }
+     dataseries.datapoints = datapoints;
+     data.push(dataseries);               
+    
+  </SCRIPT>
+  <script type="text/javascript" src="lib/canvasjs.min.js"></script> 
+  </head>
+  <body>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+  </body>
+
+
+  </HTML>
+  
